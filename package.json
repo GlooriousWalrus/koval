@@ -1,0 +1,20 @@
+{
+  "name": "koval",
+  "version": "0.0.1",
+  "main": "index.html",
+  "scripts": {
+    "tw": "tailwindcss -i style/input.css -o site/style/output.css",
+    "tw:dev": "tailwindcss -i style/input.css -o site/style/output.css --watch",
+    "tw:release": "tailwindcss -i style/input.css -o site/style/output.css --minify",
+    "dev": "RUSTFLAGS=--cfg=web_sys_unstable_apis trunk serve --open --address 0.0.0.0",
+    "clean": "rm ./site/style/output.css && rm -rf site/dist",
+    "build": "trunk build --release",
+    "install_trunk": "chmod 744 ./bin/install_trunk.sh && TRUNK_VERSION=0.17.5 ./bin/install_trunk.sh"
+  },
+  "repository": "git@github.com:GlooriousWalrus/koval.git",
+  "author": "GlooriousWalrus",
+  "license": "MIT",
+  "dependencies": {
+    "tailwindcss": "^3.3.3"
+  }
+}

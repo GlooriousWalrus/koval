@@ -1,0 +1,24 @@
+#!/usr/bin/env -S cargo +nightly -Zscript
+
+//! ```cargo
+//! [package]
+//! name = "hello"
+//! version = "0.1.0"
+//!
+//! [dependencies]
+//! clap = { version = "4.2", features = ["derive"] }
+//! ```
+
+use clap::Parser;
+
+#[derive(Parser, Debug)]
+#[clap(version)]
+struct Args {
+    #[clap(short, long, help = "Name to say Hi", default_value_t = String::from("World!"))]
+    name: String,
+}
+
+fn main() {
+    let args = Args::parse();
+    println!("Hello, {}", args.name);
+}

@@ -1,0 +1,9 @@
+/node_modules
+target/
+dist/
+
+# css style output (tailwind)
+/site/style/output.css
+
+wana_kana_rust/target/
+site/target/

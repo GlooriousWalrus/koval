@@ -1,0 +1,8 @@
+[build]
+publish = "site/dist/"
+command = "yarn install_trunk && yarn build"
+
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
