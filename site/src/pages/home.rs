@@ -37,7 +37,7 @@ pub fn Home() -> impl IntoView {
 
                 <Toast hide_modal/>
                 <div class="flex flex-col flex-nowrap 
-                            self-center my-auto mx-6
+                            self-center my-auto mx-6 w-11/12
                             sm:w-3/5 md:w-3/5 sm:max-w-md 
                             md:max-w-lg lg:max-w-xl 
                             xl:max-w-2xl"
