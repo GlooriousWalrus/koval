@@ -62,7 +62,9 @@ impl MenuHeaderVariant {
             "py-2.5",
             "sm:py-4",
             "dark:bg-slate-900",
-            "dark:border-gray-700 sticky top-0",
+            "dark:border-gray-700",
+            "fixed",
+            "top-0"
         ];
         match self {
             MenuHeaderVariant::Default => ClassVariant::Vec(DEFAULT),

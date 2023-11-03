@@ -38,7 +38,7 @@ pub fn App() -> impl IntoView {
 pub fn Layout(children: Children) -> impl IntoView {
     view! {
         <LayoutWrapper>
-            // <Menu />
+            <Menu />
             {children()}
             // <Footer />
         </LayoutWrapper>
