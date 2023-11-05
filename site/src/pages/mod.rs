@@ -1,3 +1,3 @@
 // pub mod counter;
-pub mod example;
-pub mod home;
+pub mod about;
+pub mod transliterator;

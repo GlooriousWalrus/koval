@@ -13,15 +13,15 @@ use std::ops::Not;
 #[component]
 pub fn ExamplePage() -> impl IntoView {
     view! {
-        <Title text="Leptos + Tailwindcss | Examples"/>
-        <Main id="main" class="max-w-[85rem] px-4 py-4 sm:px-6 lg:px-8 mx-auto pb-[100px] text-gray-900 dark:text-gray-400">
-            <div>
-                //   <!-- Announcement Banner -->
-                <Typography variant=TypographyVariant::H1 class={TypographyClass::H1.get()}>Examples with Explanations</Typography>
-                //   <!-- End Announcement Banner -->
-            </div>
-            <DarkModeSection/>
-            <ButtonSection/>
+        <Title text="Коваль | Про Коваль"/>
+        <Main id="main" class="max-w-[85rem] h-screen px-4 py-4 sm:px-6 lg:px-8 mx-auto text-gray-900 dark:text-gray-400">
+            // <div>
+            //     //   <!-- Announcement Banner -->
+            //     <Typography variant=TypographyVariant::H1 class={TypographyClass::H1.get()}>Examples with Explanations</Typography>
+            //     //   <!-- End Announcement Banner -->
+            // </div>
+            // <DarkModeSection/>
+            // <ButtonSection/>
             <TypographySection/>
         </Main>
         // An empty Fragment is not created on the DOM
@@ -78,28 +78,30 @@ fn ButtonSection() -> impl IntoView {
 #[component]
 fn TypographySection() -> impl IntoView {
     view! {
-        <section class="max-w-[70rem] px-4 py-4 sm:px-6 lg:px-8 mx-auto">
-            <Typography variant=TypographyVariant::H2 class={TypographyClass::H2.get()}>Typography</Typography>
+        <section class="max-w-[70rem] sm:mt-16 px-4 py-4 sm:px-6 lg:px-8 mx-auto py-auto">
+            // <Typography variant=TypographyVariant::H2 class={TypographyClass::H2.get()}>Про Коваль</Typography>
             <div class="border rounded-xl shadow-sm  border-blue-600 dark:bg-slate-800 dark:border-slate-600 p-5 mt-3">
-                <Typography variant=TypographyVariant::H1 class={TypographyClass::H1.get()}>H1</Typography>
-                <Typography variant=TypographyVariant::H2 class={TypographyClass::H2.get()}>H2</Typography>
-                <Typography variant=TypographyVariant::H3 class={TypographyClass::H3.get()}>H3</Typography>
-                <Typography variant=TypographyVariant::H4 class={TypographyClass::H4.get()}>H4</Typography>
-                <Typography variant=TypographyVariant::H5 class={TypographyClass::H5.get()}>H5</Typography>
-                <Typography variant=TypographyVariant::H6 class={TypographyClass::H6.get()}>H6</Typography>
-                <Typography variant=TypographyVariant::Paragraph class={TypographyClass::Paragraph.get()}>This is a Paragraph</Typography>
-                <p>The word <Typography variant=TypographyVariant::SpanInline class={TypographyClass::Span.get()}>span</Typography> in this sentence is wrapped,
-                also the following code
-                <Typography variant=TypographyVariant::Code {inline:true} class={TypographyClass::Code.get()}>This is a Code block</Typography>
-                is wrapped.</p>
-                <p>The word <Typography variant={TypographyVariant::Span {inline:false}} class={TypographyClass::Span.get()}>span</Typography> in this sentence is wrapped,
-                also the following code
-                <Typography variant=TypographyVariant::Code {inline:false} class={TypographyClass::Code.get()}>This is a Code block</Typography>
-                is wrapped but they are not inline.</p>
-                <Typography variant=TypographyVariant::Code {inline:false} class={TypographyClass::Code.get()}>
-                    <Typography variant=TypographyVariant::Span {inline:false}>let num: i32 = 100;</Typography>
-                    <Typography variant=TypographyVariant::Span {inline:false}>"println!{""{}"", num};"</Typography>
+                <Typography variant=TypographyVariant::H1 class={TypographyClass::H1.get()}>Про Коваль</Typography>
+                // <Typography variant=TypographyVariant::H2 class={TypographyClass::H2.get()}>H2</Typography>
+                // <Typography variant=TypographyVariant::H3 class={TypographyClass::H3.get()}>H3</Typography>
+                // <Typography variant=TypographyVariant::H4 class={TypographyClass::H4.get()}>H4</Typography>
+                // <Typography variant=TypographyVariant::H5 class={TypographyClass::H5.get()}>H5</Typography>
+                // <Typography variant=TypographyVariant::H6 class={TypographyClass::H6.get()}>H6</Typography>
+                <Typography variant=TypographyVariant::Paragraph class={TypographyClass::Paragraph.get()}>
+                    {""}
                 </Typography>
+                // <p>The word <Typography variant=TypographyVariant::SpanInline class={TypographyClass::Span.get()}>span</Typography> in this sentence is wrapped,
+                // also the following code
+                // <Typography variant=TypographyVariant::Code {inline:true} class={TypographyClass::Code.get()}>This is a Code block</Typography>
+                // is wrapped.</p>
+                // <p>The word <Typography variant={TypographyVariant::Span {inline:false}} class={TypographyClass::Span.get()}>span</Typography> in this sentence is wrapped,
+                // also the following code
+                // <Typography variant=TypographyVariant::Code {inline:false} class={TypographyClass::Code.get()}>This is a Code block</Typography>
+                // is wrapped but they are not inline.</p>
+                // <Typography variant=TypographyVariant::Code {inline:false} class={TypographyClass::Code.get()}>
+                //     <Typography variant=TypographyVariant::Span {inline:false}>let num: i32 = 100;</Typography>
+                //     <Typography variant=TypographyVariant::Span {inline:false}>"println!{""{}"", num};"</Typography>
+                // </Typography>
             </div>
         </section>
     }

@@ -12,6 +12,7 @@ leptos_meta = { version = "0.5", features = ["csr", "nightly"] }
 leptos_router = { version = "0.5", features = ["csr", "nightly"] }
 log = "0.4"
 wasm-bindgen = "0.2"
-web-sys = { version = "0.3", features = ["Window", "Clipboard", "Navigator", "Element"] }
+web-sys = { version = "0.3", features = ["Window", "Clipboard", "Navigator", "Element", "DateTimeValue"] }
 wana_kana = { path = "../wana_kana_rust" }
 wasm-bindgen-futures = "0.4"
+chrono = { version = "*", features = ["wasmbind"]}

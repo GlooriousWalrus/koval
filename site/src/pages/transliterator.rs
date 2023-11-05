@@ -1,4 +1,5 @@
 use leptos::{*, svg::view};
+use leptos_meta::Title;
 use wana_kana::ConvertJapanese;
 use std::time::Duration;
 
@@ -19,7 +20,7 @@ pub fn copy_selected_text_to_clipboard(el: MouseEvent, content: String) {
 
 
 #[component]
-pub fn Home() -> impl IntoView {
+pub fn Transliterator() -> impl IntoView {
     // import the type for <input>
     use leptos::html::Input;
 
@@ -27,9 +28,11 @@ pub fn Home() -> impl IntoView {
     let input_element: NodeRef<Input> = create_node_ref();
     let (hide_modal, set_hide_modal) = create_signal(true);
 
+    let (capitalize_flag, set_capitalize_flag) = create_signal(false);
 
     // thanks to https://tailwindcomponents.com/component/blue-buttons-example for the showcase layout
     view! {
+        <Title text="Коваль | Транслітератор"/>
         <main>
             <div class="bg-gradient-to-tl from-purple-800 
             to-violet-500 text-white font-mono 
@@ -42,7 +45,7 @@ pub fn Home() -> impl IntoView {
                             md:max-w-lg lg:max-w-xl 
                             xl:max-w-2xl"
                 >
-                    <Outputfield name set_hide_modal/>
+                    <Outputfield name set_hide_modal capitalize_flag/>
                     <p 
                         class="text-lg w-full p-2.5"
                     >
@@ -50,6 +53,7 @@ pub fn Home() -> impl IntoView {
                     </p>
                     <Inputfield name set_name input_element/>
                     <Versionwarning />
+                    <SettingsSection capitalize_flag set_capitalize_flag />
                 </div>
             </div>
         </main>
@@ -62,31 +66,31 @@ fn Versionwarning() -> impl IntoView {
     let (hide_flag, set_hide_flag) = create_signal(false);
 
     view! {
-        <div class="flex flex-col p-4 bg-purple-800 shadow-md hover:shadow-lg rounded-2xl grow" class:hidden=hide_flag>
-        <div class="flex items-center justify-between">
-            <div class="flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg"
-                    class="w-24 h-14 md:w-16 md:h-16 rounded-2xl py-2 px-2 border border-gray-800 text-blue-400 bg-gray-900" fill="none"
-                    viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-                <div class="flex flex-col ml-3">
-                    <div class="font-medium leading-none text-gray-100">
-                        <b>{"Примітка: "}</b>
-                        {"Наразі підтримуються лише хіраґана та катакана!"}
+        <div class="flex flex-col mt-5 p-4 bg-purple-800 shadow-md hover:shadow-lg rounded-2xl grow" class:hidden=hide_flag>
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        class="w-24 h-14 md:w-16 md:h-16 rounded-2xl py-2 px-2 border border-gray-800 text-blue-400 bg-gray-900" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <div class="flex flex-col ml-3">
+                        <div class="font-medium leading-none text-gray-100">
+                            <b>{"Примітка: "}</b>
+                            {"Наразі підтримуються лише хіраґана та катакана!"}
+                        </div>
                     </div>
+                    <button 
+                        class="md:ml-6"
+                        on:click=move |_| {
+                            set_hide_flag(true);
+                        }
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" class="fill-current text-white-700" viewBox="0 0 16 16" width="20" height="20"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z"></path></svg>
+                    </button>
                 </div>
-                <button 
-                    class="md:ml-6"
-                    on:click=move |_| {
-                        set_hide_flag(true);
-                    }
-                >
-                    <svg xmlns="http://www.w3.org/2000/svg" class="fill-current text-white-700" viewBox="0 0 16 16" width="20" height="20"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z"></path></svg>
-                </button>
             </div>
-        </div>
         </div>
     }
 }
@@ -123,7 +127,7 @@ fn Toast(hide_modal: ReadSignal<bool>) -> impl IntoView {
 }
 
 #[component]
-fn Outputfield(name: ReadSignal<String>, set_hide_modal: WriteSignal<bool>) -> impl IntoView {
+fn Outputfield(name: ReadSignal<String>, set_hide_modal: WriteSignal<bool>, capitalize_flag: ReadSignal<bool>) -> impl IntoView {
     view! {
         <div
             class="bg-gray-50 border border-gray-300 
@@ -137,7 +141,8 @@ fn Outputfield(name: ReadSignal<String>, set_hide_modal: WriteSignal<bool>) -> i
             no-scrollbar overflow-y-auto" 
         >
             <p 
-                class="text-3xl p-2.5 grow text-center self-center"
+                class="text-3xl select-all p-2.5 text-center w-11/12 self-center overflow-y-auto"
+                class:uppercase=capitalize_flag
             >
                     {name}
             </p>
@@ -213,9 +218,55 @@ fn Inputfield(name: ReadSignal<String>, set_name: WriteSignal<String>, input_ele
             dark:placeholder-gray-400 dark:text-white 
             dark:focus:ring-blue-500 
             dark:focus:border-blue-500
-            shadow-lg mb-5 min-w-fit" 
+            shadow-lg min-w-fit" 
             name="title"
             placeholder="Введіть ім'я..."
         />
+    }
+}
+
+
+#[component]
+fn SettingsSection(capitalize_flag: ReadSignal<bool>, set_capitalize_flag: WriteSignal<bool>) -> impl IntoView {
+
+    view! {
+        <div class="mt-5">
+            <button
+                class=
+                    "bg-gray-50 border border-gray-300 
+                    text-gray-900 text-sm rounded-lg focus:ring-blue-500 
+                    focus:border-blue-500 block p-2.5 
+                    dark:bg-gray-700 dark:border-gray-600 
+                    dark:placeholder-gray-400 dark:text-white 
+                    dark:focus:ring-blue-500 
+                    dark:focus:border-blue-500
+                    shadow-lg h-12 my-auto
+                    transition dark:hover:bg-gray-600
+                    flex flex-row items-center justify-center"
+                on:click= move |evt: MouseEvent| {
+                    // evt.prevent_default();
+                    // evt.stop_propagation();
+
+                    set_capitalize_flag(!capitalize_flag.get());
+                }
+            >
+                <svg 
+                    class="h-full w-2/5"
+                    data-darkreader-inline-stroke="" 
+                    aria-hidden="true" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    stroke-width="1.5" 
+                    viewBox="0 0 24 24" 
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.431.992a6.759 6.759 0 010 .255c-.007.378.138.75.43.99l1.005.828c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 010-.255c.007-.378-.138-.75-.43-.99l-1.004-.828a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.281z" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round"></path>                  
+                </svg>
+                <p class="text-center pl-2 py-0">
+                    {"Налаштування"}
+                </p>
+            </button>
+            
+        </div>
     }
 }
