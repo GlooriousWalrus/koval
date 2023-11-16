@@ -13,7 +13,7 @@ pub enum ButtonVariant {
 
 impl ButtonVariant {
     pub fn get(&self) -> ClassVariant {
-        const SOLID: &'static [&'static str] = &[
+        const SOLID: &[&str] = &[
             "p-3",
             "justify-center",
             "items-center",
@@ -49,7 +49,7 @@ pub enum MenuHeaderVariant {
 
 impl MenuHeaderVariant {
     pub fn get(&self) -> ClassVariant {
-        const DEFAULT: &'static [&'static str] = &[
+        const DEFAULT: &[&str] = &[
             "flex",
             "flex-wrap",
             "sm:justify-start",
@@ -64,7 +64,7 @@ impl MenuHeaderVariant {
             "dark:bg-slate-900",
             "dark:border-gray-700",
             "fixed",
-            "top-0"
+            "top-0",
         ];
         match self {
             MenuHeaderVariant::Default => ClassVariant::Vec(DEFAULT),
@@ -78,7 +78,7 @@ pub enum MenuBarVariant {
 
 impl MenuBarVariant {
     pub fn get(&self) -> ClassVariant {
-        const DEFAULT: &'static [&'static str] = &[
+        const DEFAULT: &[&str] = &[
             "relative",
             "max-w-[85rem]",
             "w-full",
@@ -150,45 +150,45 @@ pub enum TypographyClass {
 
 impl TypographyClass {
     pub fn get(&self) -> ClassVariant {
-        const H1: &'static [&'static str] = &[
+        const H1: &[&str] = &[
             "font-weight-20",
             "text-3xl",
             "text-blue-800",
             "dark:text-gray-200",
         ];
-        const H2: &'static [&'static str] = &[
+        const H2: &[&str] = &[
             "font-weight-20",
             "text-2xl",
             "text-blue-800",
             "dark:text-gray-200",
         ];
-        const H3: &'static [&'static str] = &[
+        const H3: &[&str] = &[
             "font-weight-20",
             "text-xl",
             "text-blue-800",
             "dark:text-gray-200",
         ];
-        const H4: &'static [&'static str] = &[
+        const H4: &[&str] = &[
             "font-weight-20",
             "text-md",
             "text-blue-800",
             "dark:text-gray-200",
         ];
-        const H5: &'static [&'static str] = &[
+        const H5: &[&str] = &[
             "font-weight-20",
             "text-sm",
             "text-blue-800",
             "dark:text-gray-200",
         ];
-        const H6: &'static [&'static str] = &[
+        const H6: &[&str] = &[
             "font-weight-20",
             "text-xs",
             "text-blue-800",
             "dark:text-gray-200",
         ];
-        const P: &'static [&'static str] = &["text-blue-800", "dark:text-gray-200"];
-        const SPAN: &'static [&'static str] = &["flex-none", "text-blue-800", "dark:text-gray-200"];
-        const CODE: &'static [&'static str] = &[
+        const P: &[&str] = &["text-blue-800", "dark:text-gray-200"];
+        const SPAN: &[&str] = &["flex-none", "text-blue-800", "dark:text-gray-200"];
+        const CODE: &[&str] = &[
             "text-sm",
             "sm:text-base",
             "text-left",

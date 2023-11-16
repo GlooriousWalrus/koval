@@ -10,12 +10,8 @@ pub fn MenuBar(
     children: Children,
 ) -> impl IntoView {
     view! {
-        <nav
-            id=id
-            class=format!("{} {}", variant.get(), class.get())
-            style=style
-        >
-            { children() }
+        <nav id=id class=format!("{} {}", variant.get(), class.get()) style=style>
+            {children()}
         </nav>
     }
 }
@@ -29,12 +25,8 @@ pub fn MenuHeader(
     children: Children,
 ) -> impl IntoView {
     view! {
-        <header
-            id=id
-            class=format!("{} {}", variant.get(), class.get())
-            style=style
-        >
-            { children() }
+        <header id=id class=format!("{} {}", variant.get(), class.get()) style=style>
+            {children()}
         </header>
     }
 }

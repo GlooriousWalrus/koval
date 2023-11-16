@@ -12,7 +12,7 @@ impl Variant for ClassVariant {
     fn as_vec(&self) -> Vec<&str> {
         match self {
             ClassVariant::Unstyled => Vec::<&str>::new(), // "".split(" ").collect::<Vec<&str>>(),
-            ClassVariant::Str(x) => x.split(" ").collect(),
+            ClassVariant::Str(x) => x.split(' ').collect(),
             ClassVariant::Vec(x) => x.to_vec(),
         }
     }

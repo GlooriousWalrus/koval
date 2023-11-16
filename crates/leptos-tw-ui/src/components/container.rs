@@ -10,7 +10,7 @@ pub fn Container(
     children: Children,
 ) -> impl IntoView {
     view! {
-        <div id=id class={format!("{} {}", variant.get(), class.get())} style=style>
+        <div id=id class=format!("{} {}", variant.get(), class.get()) style=style>
             {children()}
         </div>
     }
@@ -26,9 +26,7 @@ where
     F: Fn() -> IV,
     IV: IntoView,
 {
-    view! {
-        <>{render_view()}</>
-    }
+    view! { <>{render_view()}</> }
 }
 
 #[component]

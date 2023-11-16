@@ -12,10 +12,5 @@ where
     F: Fn() -> IV,
     IV: IntoView,
 {
-    view! {
-    <footer className="py-6 md:px-8 md:py-0">
-        {render_prop()}
-        {children()}
-    </footer>
-    }
+    view! { <footer className="py-6 md:px-8 md:py-0">{render_prop()} {children()}</footer> }
 }

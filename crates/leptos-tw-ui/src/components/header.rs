@@ -12,10 +12,5 @@ where
     F: Fn() -> IV,
     IV: IntoView,
 {
-    view! {
-        <header>
-        {render_prop()}
-        {children()}
-        </header>
-    }
+    view! { <header>{render_prop()} {children()}</header> }
 }

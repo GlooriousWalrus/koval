@@ -4,9 +4,9 @@ use crate::utils::is_char_katakana::is_char_katakana;
 use crate::utils::katakana_to_hiragana::*;
 
 // lazy_static! {
-//     pub(crate) static ref CONSONANTS: Vec<char> = vec!['к','ч','п','т','с','м','н','х','ф','р','д','ґ','в','ц'];
-//     pub(crate) static ref VOWELS: Vec<char> = vec!['а','е','о','у','й'];
-// }
+//     pub(crate) static ref CONSONANTS: Vec<char> =
+// vec!['к','ч','п','т','с','м','н','х','ф','р','д','ґ','в','ц'];     pub(crate) static ref VOWELS:
+// Vec<char> = vec!['а','е','о','у','й']; }
 
 /// Convert kana to romaji
 pub fn to_romaji(input: &str) -> String {
@@ -54,7 +54,7 @@ pub fn to_romaji_with_opt(orig: &str, options: Options) -> String {
     // let shit: Vec<&str> = binding.split_whitespace().collect();
 
     // let mut crapito: Vec<char> = vec![];
-    
+
     // for word in shit {
     //     let mut chars = word.chars().collect::<Vec<_>>();
     //     let wlen = chars.len();
@@ -63,8 +63,8 @@ pub fn to_romaji_with_opt(orig: &str, options: Options) -> String {
     //     let mut cons = 0;
 
     //     while cur_pos != wlen {
-    //         // if chars[cur_pos] == 'і' && cur_pos > 0 && 
-    //         //     CONSONANTS.contains(&chars[cur_pos+1]) && 
+    //         // if chars[cur_pos] == 'і' && cur_pos > 0 &&
+    //         //     CONSONANTS.contains(&chars[cur_pos+1]) &&
     //         //     VOWELS.contains(&chars[cur_pos-1])
     //         if CONSONANTS.contains(&chars[cur_pos]) {
     //             cons += 1;
@@ -74,8 +74,8 @@ pub fn to_romaji_with_opt(orig: &str, options: Options) -> String {
     //             if chars[cur_pos] == 'i' || chars[cur_pos] == 'й'
     //             {
     //                 if cur_pos+1 != wlen {
-    //                     if CONSONANTS.contains(&chars[cur_pos+1]) && VOWELS.contains(&chars[cur_pos-1]) {
-    //                         chars[cur_pos] = 'ї';
+    //                     if CONSONANTS.contains(&chars[cur_pos+1]) &&
+    // VOWELS.contains(&chars[cur_pos-1]) {                         chars[cur_pos] = 'ї';
     //                     }
     //                 }
     //             }

@@ -218,7 +218,22 @@ pub fn Span(
     children: Children,
 ) -> impl IntoView {
     view! {
-        <span id=id class=format!{"{} {}", class.unwrap_or(ClassVariant::Unstyled).to_string(), {if inline.is_some() {if inline.unwrap() {"inline-flex inline"} else {"block"}} else {"block"}}} style=style>
+        <span
+            id=id
+            class=format!(
+                "{} {}",
+                class.unwrap_or(ClassVariant::Unstyled).to_string(),
+                {
+                    if inline.is_some() {
+                        if inline.unwrap() { "inline-flex inline" } else { "block" }
+                    } else {
+                        "block"
+                    }
+                },
+            )
+
+            style=style
+        >
             {children()}
         </span>
     }
@@ -233,7 +248,22 @@ pub fn Code(
     children: Children,
 ) -> impl IntoView {
     view! {
-        <code id=id class=format!{"{} {}", class.unwrap_or(ClassVariant::Unstyled).to_string(), {if inline.is_some() {if inline.unwrap() {"inline-flex inline"} else {"block"}} else {"block"}}} style=style >
+        <code
+            id=id
+            class=format!(
+                "{} {}",
+                class.unwrap_or(ClassVariant::Unstyled).to_string(),
+                {
+                    if inline.is_some() {
+                        if inline.unwrap() { "inline-flex inline" } else { "block" }
+                    } else {
+                        "block"
+                    }
+                },
+            )
+
+            style=style
+        >
             {children()}
         </code>
     }

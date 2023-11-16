@@ -24,15 +24,12 @@ where
             style=style
             aria-disabled=move || format!("{}", disabled.get())
             on:click=move |e| {
-                // The question here is do we always allow the click for usability and let the outside function
-                //  handle the click validation of the button? https://css-tricks.com/making-disabled-buttons-more-inclusive
-                // if !disabled.get_untracked() {
-                    e.stop_propagation();
-                    on_click(e);
-                // }
+                e.stop_propagation();
+                on_click(e);
             }
         >
-            { children() }
+
+            {children()}
         </button>
     }
 }
@@ -50,12 +47,13 @@ pub fn LinkButton(
     view! {
         <a
             id=id
-            href=href // format!("{}", )
+            // format!("{}", )
+            href=href
             class=format!("{} {}", variant.get(), class.get())
             style=style
             aria-disabled=move || disabled.get()
         >
-            { children() }
+            {children()}
         </a>
     }
 }

@@ -16,7 +16,7 @@ pub fn theme_mode(toggle: bool) -> &'static str {
         toggle: bool,
         system_dark_preferred: bool,
     ) -> &'static str {
-        let theme_mode = if theme_mode == "" && !toggle {
+        let theme_mode = if theme_mode.is_empty() && !toggle {
             if system_dark_preferred {
                 "dark".to_string()
             } else {
@@ -79,7 +79,7 @@ pub fn theme_mode(toggle: bool) -> &'static str {
         },
         None => "",
     };
-    if stored_theme_mode == "" {
+    if stored_theme_mode.is_empty() {
         stored_theme_mode = resolve_toggle(html_html.class_name(), toggle, system_dark_preferred);
         // There was an error accessing local storage, so use the body class name
         html_html.set_class_name(stored_theme_mode);
@@ -115,11 +115,14 @@ where
             id=id.unwrap_or(Box::new(""))
             class=class
             style=style.unwrap_or(Box::new(""))
-            on_click={move |_e| {mode_fn(true);}}
+            on_click=move |_e| {
+                mode_fn(true);
+            }
+
             disabled=disabled
         >
-            <IconMoon class=icon_dark_class.get() />
-            <IconSun class=icon_light_class.get() />
+            <IconMoon class=icon_dark_class.get()/>
+            <IconSun class=icon_light_class.get()/>
         </Button>
     }
 }
@@ -155,21 +158,29 @@ where
             id=id.unwrap_or(Box::new(""))
             class=class.wrapper
             style=style.unwrap_or(Box::new(""))
-            on_click={move |_e| {mode_fn(true);}}
+            on_click=move |_e| {
+                mode_fn(true);
+            }
+
             disabled=disabled
         >
-            <div class=class.bar /><span class="sr-only">Switch theme</span>
+            <div class=class.bar></div>
+            <span class="sr-only">Switch theme</span>
             <span aria-hidden="true" class=class.switch>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class=class.moon>
-                        <path class=class.moon_fill
-                            d="M7.914 0a6.874 6.874 0 00-1.26 3.972c0 3.875 3.213 7.017 7.178 7.017.943 0 1.843-.178 2.668-.5C15.423 13.688 12.34 16 8.704 16 4.174 16 .5 12.41.5 7.982.5 3.814 3.754.389 7.914 0z"
-                            fill-rule="evenodd"></path>
-                    </svg>
+                    <path
+                        class=class.moon_fill
+                        d="M7.914 0a6.874 6.874 0 00-1.26 3.972c0 3.875 3.213 7.017 7.178 7.017.943 0 1.843-.178 2.668-.5C15.423 13.688 12.34 16 8.704 16 4.174 16 .5 12.41.5 7.982.5 3.814 3.754.389 7.914 0z"
+                        fill-rule="evenodd"
+                    ></path>
+                </svg>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class=class.sun>
-                        <path class=class.sun_fill
-                            d="M3.828 5.243L2.343 3.757a1 1 0 011.414-1.414l1.486 1.485a5.027 5.027 0 00-1.415 1.415zM7 3.1V1a1 1 0 112 0v2.1a5.023 5.023 0 00-2 0zm3.757.728l1.486-1.485a1 1 0 111.414 1.414l-1.485 1.486a5.027 5.027 0 00-1.415-1.415zM12.9 7H15a1 1 0 010 2h-2.1a5.023 5.023 0 000-2zm-.728 3.757l1.485 1.486a1 1 0 11-1.414 1.414l-1.486-1.485a5.027 5.027 0 001.415-1.415zM9 12.9V15a1 1 0 01-2 0v-2.1a5.023 5.023 0 002 0zm-3.757-.728l-1.486 1.485a1 1 0 01-1.414-1.414l1.485-1.486a5.027 5.027 0 001.415 1.415zM3.1 9H1a1 1 0 110-2h2.1a5.023 5.023 0 000 2zM8 11a3 3 0 110-6 3 3 0 010 6z"
-                            fill-rule="evenodd"></path>
-                    </svg>
+                    <path
+                        class=class.sun_fill
+                        d="M3.828 5.243L2.343 3.757a1 1 0 011.414-1.414l1.486 1.485a5.027 5.027 0 00-1.415 1.415zM7 3.1V1a1 1 0 112 0v2.1a5.023 5.023 0 00-2 0zm3.757.728l1.486-1.485a1 1 0 111.414 1.414l-1.485 1.486a5.027 5.027 0 00-1.415-1.415zM12.9 7H15a1 1 0 010 2h-2.1a5.023 5.023 0 000-2zm-.728 3.757l1.485 1.486a1 1 0 11-1.414 1.414l-1.486-1.485a5.027 5.027 0 001.415-1.415zM9 12.9V15a1 1 0 01-2 0v-2.1a5.023 5.023 0 002 0zm-3.757-.728l-1.486 1.485a1 1 0 01-1.414-1.414l1.485-1.486a5.027 5.027 0 001.415 1.415zM3.1 9H1a1 1 0 110-2h2.1a5.023 5.023 0 000 2zM8 11a3 3 0 110-6 3 3 0 010 6z"
+                        fill-rule="evenodd"
+                    ></path>
+                </svg>
             </span>
         </Button>
     }
@@ -199,11 +210,15 @@ where
             id=id.unwrap_or(Box::new(""))
             class=class
             style=style.unwrap_or(Box::new(""))
-            on_click={move |_e| {set_on_off(!on_off.get());on_change(on_off.get());}}
+            on_click=move |_e| {
+                set_on_off(!on_off.get());
+                on_change(on_off.get());
+            }
+
             disabled=disabled
         >
-            <Show when={on_off} fallback=move || view! { <IconMenuOff class=dark_class.get() /> }>
-                <IconMenuOn class=light_class.get() />
+            <Show when=on_off fallback=move || view! { <IconMenuOff class=dark_class.get()/> }>
+                <IconMenuOn class=light_class.get()/>
             </Show>
         </Button>
     }
