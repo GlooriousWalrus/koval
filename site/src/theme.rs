@@ -63,7 +63,7 @@ impl MenuHeaderVariant {
             "sm:py-4",
             "dark:bg-slate-900",
             "dark:border-gray-700",
-            "fixed",
+            "sticky",
             "top-0",
         ];
         match self {

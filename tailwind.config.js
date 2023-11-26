@@ -5,7 +5,12 @@ module.exports = {
     files: ["./site/*.html", "./site/src/**/*.rs", "./crates/**/*.rs"],
   },
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primarylight: '#415091',
+        secondarylight: '#949FCE',
+      }
+    },
   },
   plugins: [],
 }

@@ -35,11 +35,11 @@ pub fn Transliterator() -> impl IntoView {
     view! {
         <Title text="Коваль | Транслітератор"/>
         <main>
-            <div class="flex flex-col max-w-[85rem] h-screen 
+            <div class="flex flex-col h-screen 
             px-4 py-4 sm:px-6 lg:px-8 mx-auto ">
                 <Toast hide_modal/>
                 <div class="flex flex-col flex-nowrap
-                self-center my-auto mx-6">
+                self-center mx-auto min-w-[20rem] max-w-xs sm:max-w-2xl md:min-w-[42rem]">
                     <Versionwarning/>
                     <Outputfield name set_hide_modal/>
                     <p class="text-lg dark:text-gray-100 w-full p-2.5">{"Транслітерація імені"}</p>
@@ -57,7 +57,7 @@ fn Versionwarning() -> impl IntoView {
 
     view! {
         <div
-            class="flex flex-col mb-5 p-4 bg-purple-800 shadow-md hover:shadow-lg rounded-2xl grow"
+            class="flex flex-col mb-5 p-4 bg-primarylight shadow-md hover:shadow-lg rounded-2xl grow"
             class:hidden=hide_flag
         >
             <div class="flex items-center justify-between">
@@ -164,7 +164,7 @@ fn Outputfield(
         dark:focus:ring-blue-500 
         dark:focus:border-blue-500
         shadow-lg overflow-scroll flex h-32
-        no-scrollbar overflow-y-auto">
+        no-scrollbar overflow-y-auto relative">
 
             <Name name/>
 
@@ -177,7 +177,7 @@ fn Outputfield(
                 dark:focus:ring-blue-500 
                 dark:focus:border-blue-500
                 shadow-lg h-12 w-12 my-auto
-                transition dark:hover:bg-gray-600"
+                transition dark:hover:bg-gray-600 min-w-[3rem] absolute inset-y-0 right-3"
                 on:click=move |evt: MouseEvent| {
                     evt.prevent_default();
                     evt.stop_propagation();
@@ -245,55 +245,56 @@ fn SettingsSection(
 
     let (settings_open, set_settings_open) = create_signal(false);
 
-    let message = move || settings_open().then(|| 
-        view! { <CaseSection/> }
-    );
+    // let message = move || settings_open().then(|| 
+    //     view! { <CaseSection/> }
+    // );
 
     view! {
-        <div class="mt-5">
-            <button
-                class="bg-gray-50 border border-gray-300
-                text-gray-900 text-sm rounded-lg focus:ring-blue-500 
-                focus:border-blue-500 block p-2.5 
-                dark:bg-gray-700 dark:border-gray-600 
-                dark:placeholder-gray-400 dark:text-white 
-                dark:focus:ring-blue-500 
-                dark:focus:border-blue-500
-                shadow-lg h-12 my-auto
-                transition dark:hover:bg-gray-600
-                flex flex-row items-center justify-center"
-                on:click=move |evt: MouseEvent| {
-                    evt.prevent_default();
-                    evt.stop_propagation();
-                    set_settings_open(!settings_open());
-                }
-            >
+        <div>
+        //     <button
+        //         class="bg-gray-50 border border-gray-300
+        //         text-gray-900 text-sm rounded-lg focus:ring-blue-500 
+        //         focus:border-blue-500 block p-2.5 
+        //         dark:bg-gray-700 dark:border-gray-600 
+        //         dark:placeholder-gray-400 dark:text-white 
+        //         dark:focus:ring-blue-500 
+        //         dark:focus:border-blue-500
+        //         shadow-lg h-12 my-auto
+        //         transition dark:hover:bg-gray-600
+        //         flex flex-row items-center justify-center"
+        //         on:click=move |evt: MouseEvent| {
+        //             evt.prevent_default();
+        //             evt.stop_propagation();
+        //             set_settings_open(!settings_open());
+        //         }
+        //     >
 
-                <svg
-                    class="h-full w-2/5"
-                    data-darkreader-inline-stroke=""
-                    aria-hidden="true"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                >
-                    <path
-                        d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.431.992a6.759 6.759 0 010 .255c-.007.378.138.75.43.99l1.005.828c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 010-.255c.007-.378-.138-.75-.43-.99l-1.004-.828a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.281z"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                    ></path>
-                    <path
-                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                    ></path>
-                </svg>
-                <p class="text-center pl-2 py-0">{"Налаштування"}</p>
-            </button>
+        //         <svg
+        //             class="h-full w-2/5"
+        //             data-darkreader-inline-stroke=""
+        //             aria-hidden="true"
+        //             fill="none"
+        //             stroke="currentColor"
+        //             stroke-width="1.5"
+        //             viewBox="0 0 24 24"
+        //             xmlns="http://www.w3.org/2000/svg"
+        //         >
+        //             <path
+        //                 d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.431.992a6.759 6.759 0 010 .255c-.007.378.138.75.43.99l1.005.828c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 010-.255c.007-.378-.138-.75-.43-.99l-1.004-.828a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.281z"
+        //                 stroke-linecap="round"
+        //                 stroke-linejoin="round"
+        //             ></path>
+        //             <path
+        //                 d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+        //                 stroke-linecap="round"
+        //                 stroke-linejoin="round"
+        //             ></path>
+        //         </svg>
+        //         <p class="text-center pl-2 py-0">{"Налаштування"}</p>
+        //     </button>
 
-            {message}
+        //     {message}
+            <CaseSection/>
         </div>
     }
 }
@@ -309,8 +310,8 @@ fn Name(
         <p class=move || {
             format!(
                 "text-3xl select-all p-2.5 
-                text-center w-11/12 self-center 
-                overflow-y-auto {}",
+                text-center self-center
+                overflow-y-auto w-11/12 {}",
                 transforming_class.get(),
             )
         }>{name}</p>
@@ -329,9 +330,17 @@ fn CaseSection(
 
     view! {
         <div class="relative">
+            <p
+                class="px-2.5 text-lg dark:text-gray-100 w-full"
+            >
+                Регістр
+            </p>
             <div
-                class="absolute left-0 mt-2 
-                z-10 origin-top-right
+
+            // absolute left-0 mt-2 
+            //     z-10 origin-top-right
+
+                class="
                 bg-gray-50 border border-gray-300
                 text-gray-900 text-sm rounded-lg focus:ring-blue-500 
                 focus:border-blue-500
@@ -339,16 +348,16 @@ fn CaseSection(
                 dark:placeholder-gray-400 dark:text-white 
                 dark:focus:ring-blue-500 
                 dark:focus:border-blue-500
-                shadow-lg transition"
+                shadow-lg transition max-w-fit"
                 role="menu"
                 aria-orientation="vertical"
                 aria-labelledby="menu-button"
                 tabindex="-1"
             >
-                <div class="first:rounded-t-lg last:rounded-b-lg" role="none">
+                <div role="none">
                     // Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700"
                     <button
-                        class="block px-4 py-2 w-full rounded-t-lg hover:bg-gray-400 active:hover:bg-blue-400 hover:active:bg-blue-400"
+                        class="block px-4 py-2 w-full rounded-t-md hover:bg-secondarylight"
                         role="menuitem"
                         tabindex="-1"
                         id="menu-item-0"
@@ -358,7 +367,7 @@ fn CaseSection(
                         З великої літери
                     </button>
                     <button
-                        class="block px-4 py-2 w-full hover:bg-gray-400 hover:active:bg-blue-400"
+                        class="block px-4 py-2 w-full hover:bg-secondarylight"
                         role="menuitem"
                         tabindex="-1"
                         id="menu-item-1"
@@ -368,7 +377,7 @@ fn CaseSection(
                         Верхній регістр
                     </button>
                     <button
-                        class="block px-4 py-2 w-full rounded-b-lg hover:bg-gray-400 active:hover:bg-blue-400"
+                        class="block px-4 py-2 w-full hover:bg-secondarylight"
                         role="menuitem"
                         tabindex="-1"
                         id="menu-item-2"
@@ -376,6 +385,16 @@ fn CaseSection(
                         class:bg-blue-400=move || getter.get() == "lowercase"
                     >
                         Нижній регістр
+                    </button>
+                    <button
+                        class="block px-4 py-2 w-full rounded-b-md hover:bg-secondarylight"
+                        role="menuitem"
+                        tabindex="-1"
+                        id="menu-item-0"
+                        on:click=move |_| setter.set("normal-case".to_string())
+                        class:bg-blue-400=move || getter.get() == "normal-case"
+                    >
+                        Без форматування
                     </button>
                 // <form method="POST" action="#" role="none">
                 // <button type="submit" class="text-gray-700 block w-full px-4 py-2 text-left text-sm" role="menuitem" tabindex="-1" id="menu-item-3">Sign out</button>

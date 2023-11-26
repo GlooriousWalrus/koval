@@ -69,7 +69,7 @@ fn Menu() -> impl IntoView {
                     <span class="select-none flex-none font-weight-20 text-3xl text-blue-800 dark:text-gray-200">
                         Коваль
                         <span class="text-sm block">
-                            {"Транслітерація японськіх імен"}
+                            {"Транслітерація японських імен"}
                         </span>
                     </span>
                     <div class="sm:hidden">
