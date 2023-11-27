@@ -84,7 +84,7 @@ fn Menu() -> impl IntoView {
                     true => "transition-all duration-300 basis-full grow sm:block",
                     false => "hidden transition-all duration-300 basis-full grow sm:block",
                 }>
-                    <div class="select-none flex flex-col gap-5 mt-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:pl-5">
+                    <div class="select-none flex flex-col gap-2 mt-2 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:pl-5 ">
                         <LinkButton href="/" variant=ButtonVariant::Ghost.get()>
                             Транслітерація
                         </LinkButton>
