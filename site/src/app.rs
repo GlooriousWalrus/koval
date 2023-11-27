@@ -66,7 +66,7 @@ fn Menu() -> impl IntoView {
         <MenuHeader variant=MenuHeaderVariant::Default.get()>
             <MenuBar variant=MenuBarVariant::Default.get()>
                 <div class="flex items-center justify-between">
-                    <span class="select-none flex-none font-weight-20 text-3xl text-blue-800 dark:text-gray-200">
+                    <span class="select-none flex-none font-weight-20 text-3xl text-violet-800 dark:text-gray-200">
                         Коваль
                         <span class="text-sm block">
                             {"Транслітерація японських імен"}

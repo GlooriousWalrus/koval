@@ -21,12 +21,12 @@ impl ButtonVariant {
             "border",
             "border-transparent",
             "font-semibold",
-            "bg-blue-500",
+            "bg-violet-500",
             "text-white",
-            "hover:bg-blue-600",
+            "hover:bg-violet-600",
             "focus:outline-none",
             "focus:ring-2",
-            "focus:ring-blue-500",
+            "focus:ring-violet-500",
             "focus:ring-offset-2",
             "transition-all",
             "text-sm",
@@ -34,11 +34,11 @@ impl ButtonVariant {
         ];
         match self {
             ButtonVariant::Solid => ClassVariant::Vec(SOLID),
-            ButtonVariant::Outline => ClassVariant::Str("p-[.688rem] justify-center items-center rounded-md border-2 border-gray-200 font-semibold text-blue-500 hover:text-white hover:bg-blue-500 hover:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:border-gray-700 dark:hover:border-blue-500"),
-            ButtonVariant::Ghost => ClassVariant::Str("p-3 justify-center items-center rounded-md border border-transparent font-semibold text-blue-500 hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm"),
-            ButtonVariant::Soft => ClassVariant::Str("p-3 justify-center items-center rounded-md bg-blue-100 border border-transparent font-semibold text-blue-500 hover:text-white hover:bg-blue-500 focus:outline-none focus:ring-2 ring-offset-white focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm"),
-            ButtonVariant::White => ClassVariant::Str("p-3 justify-center items-center rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"),
-            ButtonVariant::Link => ClassVariant::Str("p-3 justify-center items-center rounded-md border border-transparent font-semibold text-blue-500 hover:text-blue-700 focus:outline-none focus:ring-2 ring-offset-white focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm"),
+            ButtonVariant::Outline => ClassVariant::Str("p-[.688rem] justify-center items-center rounded-md border-2 border-gray-200 font-semibold text-violet-500 hover:text-white hover:bg-violet-500 hover:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2 transition-all text-sm dark:border-gray-700 dark:hover:border-violet-500"),
+            ButtonVariant::Ghost => ClassVariant::Str("p-3 justify-center items-center rounded-md border border-transparent font-semibold text-violet-500 hover:bg-violet-100 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2 transition-all text-sm"),
+            ButtonVariant::Soft => ClassVariant::Str("p-3 justify-center items-center rounded-md bg-violet-100 border border-transparent font-semibold text-violet-500 hover:text-white hover:bg-violet-500 focus:outline-none focus:ring-2 ring-offset-white focus:ring-violet-500 focus:ring-offset-2 transition-all text-sm"),
+            ButtonVariant::White => ClassVariant::Str("p-3 justify-center items-center rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-violet-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"),
+            ButtonVariant::Link => ClassVariant::Str("p-3 justify-center items-center rounded-md border border-transparent font-semibold text-violet-500 hover:text-violet-700 focus:outline-none focus:ring-2 ring-offset-white focus:ring-violet-500 focus:ring-offset-2 transition-all text-sm"),
         }
     }
 }
@@ -102,7 +102,7 @@ pub struct ThemePageClass {
 
 pub fn default_page_class() -> ThemePageClass {
     ThemePageClass {
-        wrapper: "bg-gradient-to-br from-teal-100 via-violet-200 to-blue-300 dark:from-teal-700 dark:via-violet-800 dark:to-blue-900",
+        wrapper: "bg-gradient-to-br from-teal-100 via-violet-200 to-violet-300 dark:from-teal-700 dark:via-violet-800 dark:to-violet-900",
     }
 }
 
@@ -153,41 +153,41 @@ impl TypographyClass {
         const H1: &[&str] = &[
             "font-weight-20",
             "text-3xl",
-            "text-blue-800",
+            "text-violet-800",
             "dark:text-gray-200",
         ];
         const H2: &[&str] = &[
             "font-weight-20",
             "text-2xl",
-            "text-blue-800",
+            "text-violet-800",
             "dark:text-gray-200",
         ];
         const H3: &[&str] = &[
             "font-weight-20",
             "text-xl",
-            "text-blue-800",
+            "text-violet-800",
             "dark:text-gray-200",
         ];
         const H4: &[&str] = &[
             "font-weight-20",
             "text-md",
-            "text-blue-800",
+            "text-violet-800",
             "dark:text-gray-200",
         ];
         const H5: &[&str] = &[
             "font-weight-20",
             "text-sm",
-            "text-blue-800",
+            "text-violet-800",
             "dark:text-gray-200",
         ];
         const H6: &[&str] = &[
             "font-weight-20",
             "text-xs",
-            "text-blue-800",
+            "text-violet-800",
             "dark:text-gray-200",
         ];
-        const P: &[&str] = &["text-blue-800", "dark:text-gray-200"];
-        const SPAN: &[&str] = &["flex-none", "text-blue-800", "dark:text-gray-200"];
+        const P: &[&str] = &["text-violet-800", "dark:text-gray-200"];
+        const SPAN: &[&str] = &["flex-none", "text-violet-800", "dark:text-gray-200"];
         const CODE: &[&str] = &[
             "text-sm",
             "sm:text-base",

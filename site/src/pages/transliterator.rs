@@ -42,7 +42,9 @@ pub fn Transliterator() -> impl IntoView {
                 self-center mx-auto min-w-[20rem] max-w-xs sm:max-w-2xl md:min-w-[42rem]">
                     <Versionwarning/>
                     <Outputfield name set_hide_modal/>
-                    <p class="text-lg dark:text-gray-100 w-full p-2.5">{"Транслітерація імені"}</p>
+                    <p class="text-lg dark:text-gray-100 w-full p-2.5">
+                        {"Транслітерація імені"}
+                    </p>
                     <Inputfield name set_name input_element/>
                     <SettingsSection/>
                 </div>
@@ -57,14 +59,14 @@ fn Versionwarning() -> impl IntoView {
 
     view! {
         <div
-            class="flex flex-col mb-5 p-4 bg-primarylight shadow-md hover:shadow-lg rounded-2xl grow"
+            class="flex flex-col mb-5 p-4 border border-primarylight bg-violet-200 dark:bg-primarylight dark:border-secondarylight shadow-md hover:shadow-lg rounded-2xl grow"
             class:hidden=hide_flag
         >
             <div class="flex items-center justify-between">
                 <div class="flex items-center">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        class="w-24 h-14 md:w-16 md:h-16 rounded-2xl py-2 px-2 border border-gray-800 text-blue-400 bg-gray-900"
+                        class="w-24 h-14 md:w-16 md:h-16 rounded-2xl py-2 px-2 border border-secondarylight text-primarylight bg-violet-300"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -77,7 +79,7 @@ fn Versionwarning() -> impl IntoView {
                         ></path>
                     </svg>
                     <div class="flex flex-col ml-3">
-                        <div class="font-medium leading-none text-gray-100">
+                        <div class="font-medium leading-none dark:text-gray-100">
                             <b>{"Примітка: "}</b>
                             {"Наразі підтримуються лише хіраґана та катакана!"}
                         </div>
@@ -113,12 +115,12 @@ fn Toast(hide_modal: ReadSignal<bool>) -> impl IntoView {
     view! {
         <button
             type="button"
-            class="fixed self-center
-            mt-12 z-50 flex flex-col 
-            p-4 bg-purple-800 shadow-md 
+            class="absolute mt-36 self-center z-50 flex flex-col 
+            p-4 bg-violet-300 shadow-md
+            border border-primarylight
             hover:shadow-lg rounded-2xl 
-            m-auto transition 
-            hover:bg-purple-600"
+            m-auto transition
+            hover:bg-violet-200"
             class:hidden=hide_modal
         >
             <div class="flex items-center justify-between">
@@ -128,7 +130,7 @@ fn Toast(hide_modal: ReadSignal<bool>) -> impl IntoView {
                         aria-hidden="true"
                         fill="none"
                         stroke="currentColor"
-                        stroke-width="1.5"
+                        stroke-width="2.5"
                         viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg"
                     >
@@ -139,7 +141,7 @@ fn Toast(hide_modal: ReadSignal<bool>) -> impl IntoView {
                         ></path>
                     </svg>
                     <div class="flex flex-col ml-3">
-                        <div class="font-medium leading-none text-gray-100">
+                        <div class="font-medium leading-none dark:text-black">
                             <b>{"Ім'я скопійовано"}</b>
                         </div>
                     </div>
@@ -251,49 +253,49 @@ fn SettingsSection(
 
     view! {
         <div>
-        //     <button
-        //         class="bg-gray-50 border border-gray-300
-        //         text-gray-900 text-sm rounded-lg focus:ring-blue-500 
-        //         focus:border-blue-500 block p-2.5 
-        //         dark:bg-gray-700 dark:border-gray-600 
-        //         dark:placeholder-gray-400 dark:text-white 
-        //         dark:focus:ring-blue-500 
-        //         dark:focus:border-blue-500
-        //         shadow-lg h-12 my-auto
-        //         transition dark:hover:bg-gray-600
-        //         flex flex-row items-center justify-center"
-        //         on:click=move |evt: MouseEvent| {
-        //             evt.prevent_default();
-        //             evt.stop_propagation();
-        //             set_settings_open(!settings_open());
-        //         }
-        //     >
+            // <button
+            // class="bg-gray-50 border border-gray-300
+            // text-gray-900 text-sm rounded-lg focus:ring-blue-500
+            // focus:border-blue-500 block p-2.5
+            // dark:bg-gray-700 dark:border-gray-600
+            // dark:placeholder-gray-400 dark:text-white
+            // dark:focus:ring-blue-500
+            // dark:focus:border-blue-500
+            // shadow-lg h-12 my-auto
+            // transition dark:hover:bg-gray-600
+            // flex flex-row items-center justify-center"
+            // on:click=move |evt: MouseEvent| {
+            // evt.prevent_default();
+            // evt.stop_propagation();
+            // set_settings_open(!settings_open());
+            // }
+            // >
 
-        //         <svg
-        //             class="h-full w-2/5"
-        //             data-darkreader-inline-stroke=""
-        //             aria-hidden="true"
-        //             fill="none"
-        //             stroke="currentColor"
-        //             stroke-width="1.5"
-        //             viewBox="0 0 24 24"
-        //             xmlns="http://www.w3.org/2000/svg"
-        //         >
-        //             <path
-        //                 d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.431.992a6.759 6.759 0 010 .255c-.007.378.138.75.43.99l1.005.828c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 010-.255c.007-.378-.138-.75-.43-.99l-1.004-.828a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.281z"
-        //                 stroke-linecap="round"
-        //                 stroke-linejoin="round"
-        //             ></path>
-        //             <path
-        //                 d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-        //                 stroke-linecap="round"
-        //                 stroke-linejoin="round"
-        //             ></path>
-        //         </svg>
-        //         <p class="text-center pl-2 py-0">{"Налаштування"}</p>
-        //     </button>
+            // <svg
+            // class="h-full w-2/5"
+            // data-darkreader-inline-stroke=""
+            // aria-hidden="true"
+            // fill="none"
+            // stroke="currentColor"
+            // stroke-width="1.5"
+            // viewBox="0 0 24 24"
+            // xmlns="http://www.w3.org/2000/svg"
+            // >
+            // <path
+            // d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.431.992a6.759 6.759 0 010 .255c-.007.378.138.75.43.99l1.005.828c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 010-.255c.007-.378-.138-.75-.43-.99l-1.004-.828a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.281z"
+            // stroke-linecap="round"
+            // stroke-linejoin="round"
+            // ></path>
+            // <path
+            // d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+            // stroke-linecap="round"
+            // stroke-linejoin="round"
+            // ></path>
+            // </svg>
+            // <p class="text-center pl-2 py-0">{"Налаштування"}</p>
+            // </button>
 
-        //     {message}
+            // {message}
             <CaseSection/>
         </div>
     }
@@ -330,15 +332,11 @@ fn CaseSection(
 
     view! {
         <div class="relative">
-            <p
-                class="px-2.5 text-lg dark:text-gray-100 w-full"
-            >
-                Регістр
-            </p>
+            <h2 class="p-2.5 text-lg dark:text-gray-100 w-full">Регістр</h2>
             <div
 
-            // absolute left-0 mt-2 
-            //     z-10 origin-top-right
+                // absolute left-0 mt-2
+                // z-10 origin-top-right
 
                 class="
                 bg-gray-50 border border-gray-300
@@ -354,51 +352,79 @@ fn CaseSection(
                 aria-labelledby="menu-button"
                 tabindex="-1"
             >
-                <div role="none">
-                    // Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700"
-                    <button
-                        class="block px-4 py-2 w-full rounded-t-md hover:bg-secondarylight"
-                        role="menuitem"
-                        tabindex="-1"
-                        id="menu-item-0"
-                        on:click=move |_| setter.set("capitalize".to_string())
-                        class:bg-blue-400=move || getter.get() == "capitalize"
-                    >
-                        З великої літери
-                    </button>
-                    <button
-                        class="block px-4 py-2 w-full hover:bg-secondarylight"
-                        role="menuitem"
-                        tabindex="-1"
-                        id="menu-item-1"
-                        on:click=move |_| setter.set("uppercase".to_string())
-                        class:bg-blue-400=move || getter.get() == "uppercase"
-                    >
-                        Верхній регістр
-                    </button>
-                    <button
-                        class="block px-4 py-2 w-full hover:bg-secondarylight"
-                        role="menuitem"
-                        tabindex="-1"
-                        id="menu-item-2"
-                        on:click=move |_| setter.set("lowercase".to_string())
-                        class:bg-blue-400=move || getter.get() == "lowercase"
-                    >
-                        Нижній регістр
-                    </button>
-                    <button
-                        class="block px-4 py-2 w-full rounded-b-md hover:bg-secondarylight"
-                        role="menuitem"
-                        tabindex="-1"
-                        id="menu-item-0"
-                        on:click=move |_| setter.set("normal-case".to_string())
-                        class:bg-blue-400=move || getter.get() == "normal-case"
-                    >
-                        Без форматування
-                    </button>
-                // <form method="POST" action="#" role="none">
-                // <button type="submit" class="text-gray-700 block w-full px-4 py-2 text-left text-sm" role="menuitem" tabindex="-1" id="menu-item-3">Sign out</button>
-                // </form>
+                <div class="space-y-2 p-5">
+                    <div class="relative flex w-56 items-center justify-center rounded-full bg-gray-50 px-4 py-3 font-medium text-gray-700">
+                        <input
+                            class="peer hidden"
+                            type="radio"
+                            name="frameworkB"
+                            id="frameworkB1"
+                            on:click=move |_| setter.set("capitalize".to_string())
+                            checked=move || getter.get() == "capitalize"
+                        />
+                        <label
+                            class="dark:bg-gray-600 peer-checked:border-primarylight peer-checked:bg-violet-200 dark:peer-checked:bg-violet-400 hover:bg-violet-100 peer-checked:hover:bg-violet-200 absolute top-0 h-full w-full cursor-pointer rounded-full border"
+                            for="frameworkB1"
+                        ></label>
+                        <div class="peer-checked:border-transparent peer-checked:bg-primarylight peer-checked:ring-2 absolute left-4 h-5 w-5 rounded-full border-2 border-gray-300 bg-gray-200 ring-primarylight ring-offset-2"></div>
+                        <span class="dark:text-gray-50 peer-checked:text-black pointer-events-none z-10">
+                            З великої літери
+                        </span>
+                    </div>
+                    <div class="relative flex w-56 items-center justify-center rounded-full bg-gray-50 px-4 py-3 font-medium text-gray-700">
+                        <input
+                            class="peer hidden"
+                            type="radio"
+                            name="frameworkB"
+                            id="frameworkB2"
+                            on:click=move |_| setter.set("uppercase".to_string())
+                            checked=move || getter.get() == "uppercase"
+                        />
+                        <label
+                            class="dark:bg-gray-600 peer-checked:border-primarylight peer-checked:bg-violet-200 dark:peer-checked:bg-violet-400 hover:bg-violet-100 peer-checked:hover:bg-violet-200 absolute top-0 h-full w-full cursor-pointer rounded-full border"
+                            for="frameworkB2"
+                        ></label>
+                        <div class="peer-checked:border-transparent peer-checked:bg-primarylight peer-checked:ring-2 absolute left-4 h-5 w-5 rounded-full border-2 border-gray-300 bg-gray-200 ring-primarylight ring-offset-2"></div>
+                        <span class="dark:text-gray-50 peer-checked:text-black pointer-events-none z-10">
+                            Верхній регістр
+                        </span>
+                    </div>
+                    <div class="relative flex w-56 items-center justify-center rounded-full bg-gray-50 px-4 py-3 font-medium text-gray-700">
+                        <input
+                            class="peer hidden"
+                            type="radio"
+                            name="frameworkB"
+                            id="frameworkB3"
+                            on:click=move |_| setter.set("lowercase".to_string())
+                            checked=move || getter.get() == "lowercase"
+                        />
+                        <label
+                            class="dark:bg-gray-600 peer-checked:border-primarylight peer-checked:bg-violet-200 dark:peer-checked:bg-violet-400 hover:bg-violet-100 peer-checked:hover:bg-violet-200 absolute top-0 h-full w-full cursor-pointer rounded-full border"
+                            for="frameworkB3"
+                        ></label>
+                        <div class="peer-checked:border-transparent peer-checked:bg-primarylight peer-checked:ring-2 absolute left-4 h-5 w-5 rounded-full border-2 border-gray-300 bg-gray-200 ring-primarylight ring-offset-2"></div>
+                        <span class="dark:text-gray-50 peer-checked:text-black pointer-events-none z-10">
+                            Нижній регістр
+                        </span>
+                    </div>
+                    <div class="relative flex w-56 items-center justify-center rounded-full bg-gray-50 px-4 py-3 font-medium text-gray-700">
+                        <input
+                            class="peer hidden"
+                            type="radio"
+                            name="frameworkB"
+                            id="frameworkB4"
+                            on:click=move |_| setter.set("normal-case".to_string())
+                            checked=move || getter.get() == "normal-case"
+                        />
+                        <label
+                            class="dark:bg-gray-600 peer-checked:border-primarylight peer-checked:bg-violet-200 dark:peer-checked:bg-violet-400 hover:bg-violet-100 peer-checked:hover:bg-violet-200 absolute top-0 h-full w-full cursor-pointer rounded-full border"
+                            for="frameworkB4"
+                        ></label>
+                        <div class="peer-checked:border-transparent peer-checked:bg-primarylight peer-checked:ring-2 absolute left-4 h-5 w-5 rounded-full border-2 border-gray-300 bg-gray-200 ring-primarylight ring-offset-2"></div>
+                        <span class="dark:text-gray-50 peer-checked:text-black pointer-events-none z-10">
+                            Без форматування
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>
