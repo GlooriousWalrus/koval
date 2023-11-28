@@ -90,7 +90,7 @@ fn LayoutWrapper(children: Children) -> impl IntoView {
     let default_class = default_page_class();
 
     view! {
-        <div class=default_class.wrapper class:min-h-screen=false>
+        <div class=default_class.wrapper class:min-h-screen=true>
             {children()}
         </div>
     }
@@ -147,7 +147,7 @@ fn Footer() -> impl IntoView {
     let year = Local::now().year();
 
     view! {
-        <footer class="sticky bottom-0 left-0 z-20 w-full p-4 bg-white border-t border-gray-200 shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-slate-900 dark:border-gray-600">
+        <footer class="w-full fixed inset-x-0 z-50 bottom-0 p-4 bg-white border-t border-gray-200 shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-slate-900 dark:border-gray-600">
             <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">
                 {format!("© {} ", year)}
                 <a href="https://github.com/GlooriousWalrus" class="hover:underline">
