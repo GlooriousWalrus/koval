@@ -20,10 +20,48 @@ use crate::{
 #[component]
 pub fn App() -> impl IntoView {
     provide_meta_context();
+    let formatter = |text| format!("{text} — Транслітерація японських імен");
 
     view! {
         <Layout>
+            <Title formatter/>
+            <Meta charset="utf-8"/>
+            <Meta
+                name="description"
+                content="Транслітерація японських імен українською за стандартом Коваленко 2012. Транслітерує хіраґану та катакану. Для перекладачів аніме/мангі."
+            />
             // <Stylesheet id="leptos" href="/pkg/tailwind.css"/>
+            <Meta name="author" content="GlooriousWalrus"/>
+            <Meta
+                name="keywords"
+                content="
+                транслітерація, 
+                транслітерація онлайн, 
+                транслітерація з японської на українську, 
+                транслітерація імен, 
+                транслітерація прізвища, 
+                транслітерація японських імен, 
+                японська транслітерація, 
+                Транскрипція з японської на українську, 
+                japanese-ukrainian transliterator, 
+                japanese-ukrainian name transliteration,
+                Транскрипція з японської на українську мову,
+                Транскрипція японської,
+                переклад японських імен,
+                переклад японських назв,
+                переклад японських слів,
+                транслітерація Коваленко,
+                Японсько-українські системи транскрипції та транслітерації,
+                Система японсько-української практичної транскрипції за Олександром Коваленком,
+                практична транскрипція японської,
+                Перекладач японських імен,
+                фонетика японськох імен
+                Переклад аніме,
+                Переклад аніме назв,
+                переклад аніме імен,
+                переклад манги
+                "
+            />
             <Link rel="shortcut icon" type_="image/ico" href="/favicon.ico"/>
             <Router>
                 <Routes>
@@ -84,7 +122,7 @@ fn Menu() -> impl IntoView {
                     true => "transition-all duration-300 basis-full grow sm:block",
                     false => "hidden transition-all duration-300 basis-full grow sm:block",
                 }>
-                    <div class="select-none flex flex-col gap-2 mt-2 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:pl-5 ">
+                    <div class="select-none flex flex-col mt-4 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:pl-5 ">
                         <LinkButton href="/" variant=ButtonVariant::Ghost.get()>
                             Транслітерація
                         </LinkButton>
