@@ -1,0 +1,47 @@
+name: cloudflarepages
+
+on:
+  push:
+    branches: [ "main" ]
+
+env:
+  CARGO_TERM_COLOR: always
+
+concurrency:
+  group: "pages"
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
+    name: Publish to Cloudflare Pages
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      # Run a build step here if your project requires
+      - name: Setup Yarn
+        # You may pin to the exact commit or the version.
+        # uses: mskelton/setup-yarn@3c5d9b1e9b3fef69d05b4968efb613594da89f87
+        uses: mskelton/setup-yarn@v1.6.0
+      - name: build
+        run: yarn install_trunk && yarn build
+
+      - name: Publish to Cloudflare Pages
+        uses: cloudflare/pages-action@v1.5.0
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: CLOUDFLARE_ACCOUNT_ID
+          projectName: CLOUDFLARE_PROJECT_NAME
+          directory: site/dist/
+          # Optional: Enable this if you want to have GitHub Deployments triggered
+          # gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          # Optional: Switch what branch you are publishing to.
+          # By default this will be the branch which triggered this workflow
+          branch: main
+          # Optional: Change the working directory
+          # workingDirectory: my-site
+          # Optional: Change the Wrangler version, allows you to point to a specific version or a tag such as `beta`
+          wranglerVersion: '3'
