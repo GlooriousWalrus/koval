@@ -13,9 +13,9 @@ pub fn AboutPage() -> impl IntoView {
         <Title text="Коваль | Про Коваль"/>
         <Main
             id="main"
-            class="max-w-[45rem] h-screen px-4 py-4 sm:px-6 lg:px-8 mx-auto text-gray-900 dark:text-gray-400"
+            class="max-w-[45rem] px-4 py-4 sm:px-6 lg:px-8 mx-auto text-gray-900 dark:text-gray-400"
         >
-            <div>
+            <div class="pl-3">
                 // <!-- Announcement Banner -->
                 <Typography variant=TypographyVariant::H1 class=TypographyClass::H1.get()>
                     Про Коваль
