@@ -10,7 +10,7 @@ use leptos_tw_ui::components::{
 };
 
 use crate::{
-    pages::{about::ExamplePage, transliterator::Transliterator},
+    pages::{about::AboutPage, transliterator::Transliterator},
     theme::{
         default_page_class, ButtonVariant, MenuBarVariant, MenuHeaderVariant,
         ToggleSwitchClassVariant,
@@ -59,14 +59,15 @@ pub fn App() -> impl IntoView {
                 Переклад аніме,
                 Переклад аніме назв,
                 переклад аніме імен,
-                переклад манги
+                переклад манги,
+                Українська транслітерація японської
                 "
             />
             <Link rel="shortcut icon" type_="image/ico" href="/favicon.ico"/>
             <Router>
                 <Routes>
                     <Route path="/" view=move || view! { <Transliterator/> }/>
-                    <Route path="/about" view=move || view! { <ExamplePage/> }/>
+                    <Route path="/about" view=move || view! { <AboutPage/> }/>
                 </Routes>
             </Router>
         </Layout>

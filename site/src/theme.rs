@@ -161,6 +161,7 @@ impl TypographyClass {
             "text-2xl",
             "text-violet-800",
             "dark:text-gray-200",
+            "mt-4"
         ];
         const H3: &[&str] = &[
             "font-weight-20",
