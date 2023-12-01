@@ -1,7 +1,7 @@
 [workspace]
 resolver = "2"
 edition = "2021"
-members = ["crates/leptos-tw-ui", "site", "wana_kana_rust"]
+members = ["crates/leptos-tw-ui", "site"]
 # exclude = ["site"]
 
 [workspace.package]

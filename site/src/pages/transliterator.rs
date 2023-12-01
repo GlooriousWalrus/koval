@@ -1,7 +1,7 @@
 use leptos::*;
 use leptos_meta::Title;
 use std::time::Duration;
-use wana_kana::ConvertJapanese;
+use wana_kana::{ConvertJapanese, Options};
 
 extern crate wana_kana;
 
@@ -222,7 +222,14 @@ fn Inputfield(
             on:input=move |ev| {
                 ev.prevent_default();
                 let value = input_element().expect("<input> to exist").value();
-                set_name(value.to_romaji());
+                set_name(value.
+                    to_ukrainian_with_opt(
+                        Options {
+                            imemode: true,
+                            ..Default::default()
+                        }
+                    )
+                )
             }
 
             // prop:value=name
