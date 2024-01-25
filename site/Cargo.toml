@@ -6,13 +6,13 @@ edition = "2021"
 [dependencies]
 console_error_panic_hook = { version = "0.1" }
 console_log = { version = "1" }
-leptos = { version = "0.5.4", features = ["csr", "nightly"] }
+leptos = { version = "0.5.7", features = ["csr", "nightly"] }
 leptos-tw-ui.workspace = true
-leptos_meta = { version = "0.5.4", features = ["csr", "nightly"] }
-leptos_router = { version = "0.5.4", features = ["csr", "nightly"] }
+leptos_meta = { version = "0.5.7", features = ["csr", "nightly"] }
+leptos_router = { version = "0.5.7", features = ["csr", "nightly"] }
 log = "0.4"
 wasm-bindgen = "0.2"
 web-sys = { version = "0.3", features = ["Window", "Clipboard", "Navigator", "Element", "DateTimeValue"] }
-wana_kana = { git = "https://github.com/GlooriousWalrus/wana_kana_rust" }
+wana_kana = { git = "https://github.com/alardev/wana_kana_rust" }
 wasm-bindgen-futures = "0.4"
 chrono = { version = "*", features = ["wasmbind"]}

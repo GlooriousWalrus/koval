@@ -82,6 +82,9 @@ fn Versionwarning() -> impl IntoView {
                         <div class="font-medium leading-none dark:text-gray-100">
                             <b>{"Примітка: "}</b>
                             {"Наразі підтримуються лише хіраґана та катакана!"}
+                            <br/>
+                            {"Для розділення складів використовуйте _ між слогами наприклад: "}
+                            <b>{"あか_いざわ"}</b>
                         </div>
                     </div>
                     <button
