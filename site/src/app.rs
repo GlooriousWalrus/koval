@@ -31,7 +31,7 @@ pub fn App() -> impl IntoView {
                 content="Транслітерація японських імен українською за стандартом Коваленко 2012. Транслітерує хіраґану та катакану. Для перекладачів аніме/мангі."
             />
             // <Stylesheet id="leptos" href="/pkg/tailwind.css"/>
-            <Meta name="author" content="GlooriousWalrus"/>
+            <Meta name="author" content="alardev"/>
             <Link rel="shortcut icon" type_="image/ico" href="/favicon.ico"/>
             <Router>
                 <Routes>
@@ -119,8 +119,8 @@ fn Footer() -> impl IntoView {
         <footer class="w-full fixed inset-x-0 z-50 bottom-0 p-4 bg-white border-t border-gray-200 shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-slate-900 dark:border-gray-600">
             <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">
                 {format!("© {} ", year)}
-                <a href="https://github.com/GlooriousWalrus" class="hover:underline">
-                    {"GlooriousWalrus"}
+                <a href="https://github.com/alardev" class="hover:underline">
+                    {"alardev"}
                 </a>
             </span>
         // <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">

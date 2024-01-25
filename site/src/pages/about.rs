@@ -41,7 +41,7 @@ fn AboutTextBlock() -> impl IntoView {
                 >
                     <a
                         class="font-semibold dark:text-violet-400"
-                        href="https://github.com/GlooriousWalrus/koval"
+                        href="https://github.com/alardev/koval"
                         target="_blank"
                     >
                         Коваль
@@ -115,7 +115,7 @@ fn AboutTextBlock() -> impl IntoView {
 
                     <a
                         class="font-semibold dark:text-violet-400"
-                        href="https://github.com/GlooriousWalrus/koval/issues/new"
+                        href="https://github.com/alardev/koval/issues/new"
                         target="_blank"
                     >
                         Github
