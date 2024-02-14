@@ -395,19 +395,14 @@ fn CaseSection() -> impl IntoView {
 }
 
 fn uppercase_words(data: &str) -> String {
-    // Uppercase first letter in string, and letters after spaces.
-    let mut result = String::new();
-    let mut first = true;
-    for value in data.chars() {
-        if first {
-            result.push(value.to_ascii_uppercase());
-            first = false;
-        } else {
-            result.push(value);
-            if value == ' ' {
-                first = true;
+    data.split_whitespace() // Split the input string into an iterator of words.
+        .map(|word| { // Map each word to a new string with the first letter capitalized.
+            let mut chars = word.chars(); // Get an iterator of the characters in the word.
+            match chars.next() { // Match on the first character of the word.
+                Some(first_char) => first_char.to_uppercase().collect::<String>() + chars.as_str(),
+                None => String::new(), // Return an empty string if there is no first character.
             }
-        }
-    }
-    result
+        })
+        .collect::<Vec<String>>() // Collect the mapped words into a vector of strings.
+        .join(" ") // Join the vector of strings into a single string with spaces.
 }
