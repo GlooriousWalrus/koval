@@ -32,7 +32,7 @@ pub fn App() -> impl IntoView {
             />
             // <Stylesheet id="leptos" href="/pkg/tailwind.css"/>
             <Meta name="author" content="alardev"/>
-            <Link rel="shortcut icon" type_="image/ico" href="/favicon.ico"/>
+            <Link rel="shortcut icon" type_="image/svg+xml" href="/favicon.svg"/>
             <Router>
                 <Routes>
                     <Route path="/" view=move || view! { <Transliterator/> }/>
@@ -74,6 +74,7 @@ fn Menu() -> impl IntoView {
         <MenuHeader variant=MenuHeaderVariant::Default.get()>
             <MenuBar variant=MenuBarVariant::Default.get()>
                 <div class="flex items-center justify-between">
+                    
                     <span class="select-none flex-none font-weight-20 text-3xl text-violet-800 dark:text-gray-200">
                         Коваль
                         <span class="text-sm block">
