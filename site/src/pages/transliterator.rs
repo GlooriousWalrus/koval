@@ -118,7 +118,7 @@ fn Toast(hide_modal: ReadSignal<bool>) -> impl IntoView {
     view! {
         <button
             type="button"
-            class="absolute mt-36 self-center z-50 flex flex-col 
+            class="absolute mt-36 self-center z-50 flex flex-col
             p-4 bg-violet-300 shadow-md
             border border-primarylight
             hover:shadow-lg rounded-2xl 
@@ -155,11 +155,7 @@ fn Toast(hide_modal: ReadSignal<bool>) -> impl IntoView {
 }
 
 #[component]
-fn Outputfield(
-    name: ReadSignal<String>,
-    set_hide_modal: WriteSignal<bool>,
-) -> impl IntoView {
-
+fn Outputfield(name: ReadSignal<String>, set_hide_modal: WriteSignal<bool>) -> impl IntoView {
     view! {
         <div class="bg-gray-50 border border-gray-300
         text-gray-900 text-sm rounded-lg focus:ring-blue-500 
@@ -252,12 +248,10 @@ fn Inputfield(
 }
 
 #[component]
-fn SettingsSection(
-) -> impl IntoView {
-
+fn SettingsSection() -> impl IntoView {
     let (settings_open, set_settings_open) = create_signal(false);
 
-    // let message = move || settings_open().then(|| 
+    // let message = move || settings_open().then(||
     //     view! { <CaseSection/> }
     // );
 
@@ -265,33 +259,39 @@ fn SettingsSection(
 }
 
 #[component]
-fn Name(
-    name: ReadSignal<String>, 
-) -> impl IntoView {
-    let transforming_class = use_context::<ReadSignal<String>>()
-        .expect("to have found the getter provided");
+fn Name(name: ReadSignal<String>) -> impl IntoView {
+    let transforming_class =
+        use_context::<ReadSignal<String>>().expect("to have found the getter provided");
 
     view! {
         <p class=move || {
             format!(
-                "text-3xl select-all p-2.5 
+                "text-3xl select-all p-2.5
                 text-center self-center
                 overflow-y-auto w-11/12 {}",
                 transforming_class.get(),
             )
-        }>{name}</p>
+        }>
+            {
+                move || {
+                    match transforming_class.get().as_str() {
+                        "capitalize" => uppercase_words(&name.get()), // Convert to String for consistency
+                        "uppercase" => name.get().to_uppercase(), // Returns a String, so it's owned
+                        "lowercase" => name.get().to_lowercase(), // Returns a String
+                        "normal-case" => name.get(),
+                        _ => "wtf".to_string(),
+                    }
+                }
+            }
+        </p>
     }
 }
 
 #[component]
-fn CaseSection(
+fn CaseSection() -> impl IntoView {
+    let setter = use_context::<WriteSignal<String>>().expect("to have found the setter provided");
 
-) -> impl IntoView {
-    let setter = use_context::<WriteSignal<String>>()
-        .expect("to have found the setter provided");
-
-    let getter = use_context::<ReadSignal<String>>()
-        .expect("to have found the getter provided");
+    let getter = use_context::<ReadSignal<String>>().expect("to have found the getter provided");
 
     view! {
         <div class="grid justify-items-center mb-20">
@@ -392,4 +392,22 @@ fn CaseSection(
             </div>
         </div>
     }
+}
+
+fn uppercase_words(data: &str) -> String {
+    // Uppercase first letter in string, and letters after spaces.
+    let mut result = String::new();
+    let mut first = true;
+    for value in data.chars() {
+        if first {
+            result.push(value.to_ascii_uppercase());
+            first = false;
+        } else {
+            result.push(value);
+            if value == ' ' {
+                first = true;
+            }
+        }
+    }
+    result
 }
