@@ -16,3 +16,4 @@ web-sys = { version = "0.3", features = ["Window", "Clipboard", "Navigator", "El
 wana_kana = { git = "https://github.com/alardev/wana_kana_rust" }
 wasm-bindgen-futures = "0.4"
 chrono = { version = "*", features = ["wasmbind"]}
+

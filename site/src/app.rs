@@ -74,7 +74,7 @@ fn Menu() -> impl IntoView {
         <MenuHeader variant=MenuHeaderVariant::Default.get()>
             <MenuBar variant=MenuBarVariant::Default.get()>
                 <div class="flex items-center justify-between">
-                    
+                    <img src="favicon-b86db5d093490b.svg" class="h-16"/>
                     <span class="select-none flex-none font-weight-20 text-3xl text-violet-800 dark:text-gray-200">
                         Коваль
                         <span class="text-sm block">
@@ -99,6 +99,9 @@ fn Menu() -> impl IntoView {
                         </LinkButton>
                         <LinkButton href="/about" variant=ButtonVariant::Ghost.get()>
                             Про Коваль
+                        </LinkButton>
+                        <LinkButton href="https://t.me/koval_translit_bot" variant=ButtonVariant::Ghost.get()>
+                            <img src="telegram.svg" class="w-7 dark:invert dark:hover:filter-none dark:focus:filter-none"/>
                         </LinkButton>
                         <ThemeToggleSwitch
                             mode_fn=theme_mode
