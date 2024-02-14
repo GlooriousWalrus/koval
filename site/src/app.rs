@@ -10,7 +10,7 @@ use leptos_tw_ui::components::{
 };
 
 use crate::{
-    pages::{about::AboutPage, transliterator::Transliterator},
+    pages::{about::AboutPage, guide::GuidePage, transliterator::Transliterator},
     theme::{
         default_page_class, ButtonVariant, MenuBarVariant, MenuHeaderVariant,
         ToggleSwitchClassVariant,
@@ -37,6 +37,7 @@ pub fn App() -> impl IntoView {
                 <Routes>
                     <Route path="/" view=move || view! { <Transliterator/> }/>
                     <Route path="/about" view=move || view! { <AboutPage/> }/>
+                    <Route path="/guide" view=move || view! { <GuidePage/> }/>
                 </Routes>
             </Router>
         </Layout>
@@ -96,6 +97,9 @@ fn Menu() -> impl IntoView {
                     <div class="select-none flex flex-col mt-4 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:pl-5 ">
                         <LinkButton href="/" variant=ButtonVariant::Ghost.get()>
                             Транслітерація
+                        </LinkButton>
+                        <LinkButton href="/guide" variant=ButtonVariant::Ghost.get()>
+                            Посібник
                         </LinkButton>
                         <LinkButton href="/about" variant=ButtonVariant::Ghost.get()>
                             Про Коваль

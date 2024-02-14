@@ -87,7 +87,7 @@ fn AboutTextBlock() -> impl IntoView {
                         target="_blank"
                         href="https://github.com/alardev/wana_kana_rust"
                     >
-                        Модифікація наведеної бібліотеки 
+                        Модифікація наведеної бібліотеки
                     </a>
                     допомогла створити транслітерацію хірагани/катакани українською мовою за використання
                     <a
@@ -225,7 +225,7 @@ fn AboutTextBlock() -> impl IntoView {
                             <a
                             class="font-semibold dark:text-violet-400"
                             href="https://www.instagram.com/stoka100k/"
-                            target="_blank" 
+                            target="_blank"
                             >
                                 Сашко
                             </a> - За створення чудового логотипу для сайту.
