@@ -75,7 +75,7 @@ fn Menu() -> impl IntoView {
         <MenuHeader variant=MenuHeaderVariant::Default.get()>
             <MenuBar variant=MenuBarVariant::Default.get()>
                 <div class="flex items-center justify-between">
-                    <img src="favicon-b86db5d093490b.svg" class="h-16"/>
+                    <img src="favicon-b86db5d093490b.svg" class="h-16 sm:mr-2"/>
                     <span class="select-none flex-none font-weight-20 text-3xl text-violet-800 dark:text-gray-200">
                         Коваль
                         <span class="text-sm block">
