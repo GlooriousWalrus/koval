@@ -23,7 +23,7 @@ pub fn copy_selected_text_to_clipboard(el: MouseEvent, content: String) {
     
     #[cfg(web_sys_unstable_apis)]
     if let Some(clipboard) = window().navigator().clipboard() {
-        clipboard.write_text(text);
+        clipboard.write_text(&text);
     } else {
         log::error!("Clipboard is not supported");
     }
@@ -48,7 +48,7 @@ pub fn Transliterator() -> impl IntoView {
         <Title text="Коваль | Транслітератор"/>
         <main>
             <div class="flex flex-col landscape:h-full
-            px-4 py-4 sm:px-6 lg:px-8 mx-auto min-h-screen">
+             py-4 sm:px-6 lg:px-8 mx-auto min-h-screen">
                 <Toast hide_modal/>
                 <div class="flex flex-col flex-nowrap
                 self-center mx-auto min-w-[20rem] max-w-xs sm:max-w-2xl md:min-w-[42rem]">

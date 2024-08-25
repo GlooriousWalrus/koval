@@ -4,8 +4,13 @@ edition = "2021"
 members = ["crates/leptos-tw-ui", "site"]
 # exclude = ["site"]
 
+[profile.release]
+opt-level = 'z'
+
 [workspace.package]
+lto = true
 version = "0.2.0"
+panic = "abort"
 
 [workspace.dependencies]
 leptos-tw-ui = { path = "crates/leptos-tw-ui", default-features = false }

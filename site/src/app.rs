@@ -75,14 +75,14 @@ fn Menu() -> impl IntoView {
         <MenuHeader variant=MenuHeaderVariant::Default.get()>
             <MenuBar variant=MenuBarVariant::Default.get()>
                 <div class="flex items-center justify-between">
-                    <img src="favicon-b86db5d093490b.svg" class="h-16 sm:mr-2"/>
+                    <img src="favicon-b86db5d093490b.svg" class="h-16 mx-auto"/>
                     <span class="select-none flex-none font-weight-20 text-3xl text-violet-800 dark:text-gray-200">
                         Коваль
-                        <span class="text-sm block">
+                        <span class="text-sm block mx-auto">
                             {"Транслітерація японських імен"}
                         </span>
                     </span>
-                    <div class="sm:hidden">
+                    <div class="sm:hidden mx-auto">
                         <MenuToggleButton
                             on_change=set_active
                             class="focus:outline-none p-1"
@@ -94,7 +94,7 @@ fn Menu() -> impl IntoView {
                     true => "transition-all duration-300 basis-full grow sm:block",
                     false => "hidden transition-all duration-300 basis-full grow sm:block",
                 }>
-                    <div class="select-none flex flex-col mt-4 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:pl-5 ">
+                    <div class="select-none flex flex-col ml-1/4 mt-4 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:pl-5 ">
                         <LinkButton href="/" variant=ButtonVariant::Ghost.get()>
                             Транслітерація
                         </LinkButton>

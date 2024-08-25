@@ -83,7 +83,6 @@ impl MenuBarVariant {
             "max-w-[85rem]",
             "w-full",
             "mx-auto",
-            "px-4",
             "sm:flex",
             "sm:items-center",
             "sm:justify-between",
