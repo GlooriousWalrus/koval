@@ -9,21 +9,13 @@ use web_sys::MouseEvent;
 
 pub fn copy_selected_text_to_clipboard(el: MouseEvent, content: String) {
     log::warn!("Copying text to clipboard..");
-
-    let transforming_class =
-        use_context::<ReadSignal<String>>().expect("to have found the getter provided");
-
-    let text = match transforming_class.get().as_str() {
-            "capitalize" => uppercase_words(&content), // Convert to String for consistency
-            "uppercase" => content.to_uppercase(), // Returns a String, so it's owned
-            "lowercase" => content.to_lowercase(), // Returns a String
-            "normal-case" => content,
-            _ => "".to_string(),
-        };
-    
     #[cfg(web_sys_unstable_apis)]
     if let Some(clipboard) = window().navigator().clipboard() {
+<<<<<<< HEAD
         clipboard.write_text(&text);
+=======
+        clipboard.write_text(&content);
+>>>>>>> parent of 21dc0cb (chore: remove unneeded ghactions ymls, move logo a bit)
     } else {
         log::error!("Clipboard is not supported");
     }
@@ -291,7 +283,7 @@ fn Name(name: ReadSignal<String>) -> impl IntoView {
                         "uppercase" => name.get().to_uppercase(), // Returns a String, so it's owned
                         "lowercase" => name.get().to_lowercase(), // Returns a String
                         "normal-case" => name.get(),
-                        _ => "".to_string(),
+                        _ => "wtf".to_string(),
                     }
                 }
             }
